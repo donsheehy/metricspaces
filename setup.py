@@ -4,14 +4,14 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="XXX",
+    name="metricspaces",
     version="0.1.0",
     author="Donald R. Sheehy",
     author_email="don.r.sheehy@gmail.com",
-    description="XXX",
+    description="A package for computing wiht metric spaces",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="XXX",
+    url="https://github.com/donsheehy/metricspaces",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
@@ -24,6 +24,6 @@ setuptools.setup(
     ],
     entry_points='''
         [console_scripts]
-        XXX=XXX.cli:cli
+        metricspaces=metricspaces.cli:cli
     '''
 )

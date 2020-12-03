@@ -8,6 +8,7 @@ sphinx = "*"
 sphinx-rtd-theme = "*"
 
 [packages]
+metricspaces = {editable = true, path = "."}
 
 [requires]
 python_version = "3.7"

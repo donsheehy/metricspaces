@@ -1,5 +1,5 @@
-Welcome to XXX's documentation!
-===============================
+Welcome to metricspaces's documentation!
+========================================
 
 .. toctree::
    :maxdepth: 2
@@ -7,6 +7,7 @@ Welcome to XXX's documentation!
 
    problem
    installation
+   metricspace
    examples
    cli
 

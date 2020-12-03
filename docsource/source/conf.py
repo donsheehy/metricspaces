@@ -17,9 +17,9 @@ sys.path.insert(0, os.path.abspath('.'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'XXX'
-copyright = '2019, XXX'
-author = 'XXX'
+project = 'metricspaces'
+copyright = '2020, Donald R. Sheehy'
+author = 'Don Sheehy'
 
 # The full version, including alpha/beta/rc tags
 release = '0.0.1'

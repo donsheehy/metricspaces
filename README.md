@@ -1,5 +1,5 @@
-# model-project
-A starter repository for research code projects.
+# metricspaces
+A Python Package for working with Metric Spaces
 
 ## Steps to Get Started
 
