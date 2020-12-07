@@ -14,10 +14,41 @@ class MetricSpace:
         self.points = set(points)
         self.distfn = dist if dist is not None else MetricSpace.pointdist
 
+    def add(self, point):
+        """
+        Add `point` to the metric space.
+        """
+        self.points.add(point)
+
+    def fromstrings(self, strings, parser):
+        """
+        Take a collection of strings as input and parse each as a point.
+
+        The string is read only up to the first semicolon (if present).
+        """
+        for s in strings:
+            self.add(parser(s.split(';')[0]))
+
+
     def __iter__(self):
+        """
+        Return an iterator over the points that have been explicitly added to
+        the metric space.
+
+        It is possible to use a metric space object only as a cache-enabled
+        wrapper around a metric function.  The iterator will not iterate over
+        all points in the cache, only those that were added in the initializer
+        or through the `add` method.
+        """
         return iter(self.points)
 
     def __len__(self):
+        """
+        Return the number of points stored in the metric space.
+
+        As with `__iter__`, only those points explicitly added in `__init__` or
+        `add` will be counted.
+        """
         return len(self.points)
 
     def pointdist(a, b):

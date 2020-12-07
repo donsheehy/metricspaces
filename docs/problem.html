@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>The Problem &mdash; XXX 0.0.1 documentation</title>
+  <title>The Problem &mdash; metricspaces 0.0.1 documentation</title>
   
 
   
@@ -21,10 +21,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -36,7 +36,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Installation" href="installation.html" />
-    <link rel="prev" title="Welcome to XXX’s documentation!" href="index.html" /> 
+    <link rel="prev" title="Welcome to metricspaces’s documentation!" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -50,7 +50,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> XXX
+            <a href="index.html" class="icon icon-home"> metricspaces
           
 
           
@@ -100,7 +100,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">XXX</a>
+          <a href="index.html">metricspaces</a>
         
       </nav>
 
@@ -152,6 +152,18 @@
             
   <div class="section" id="the-problem">
 <h1>The Problem<a class="headerlink" href="#the-problem" title="Permalink to this headline">¶</a></h1>
+<p>There are many cases where one would like to compute with metric spaces.
+This library is designed to be lightweight and versatile.</p>
+<p>The primary design goals are:</p>
+<ul class="simple">
+<li><p>It should handle both Euclidean metrics (via numpy) and those defined by a provided distance function.</p></li>
+<li><p>It should interface seamlessly with net-tree, cover tree, and greedy tree code among others.</p></li>
+<li><p>It should have support for data collection like counting distances computed.</p></li>
+<li><p>It should handle the caching of distances.</p></li>
+<li><p>It should be able to use approximate distances.</p></li>
+<li><p>It should support alternative distance comparison methods.</p></li>
+<li><p>It should cache upper and lower bounds on distances in settings where distance comparison suffices.</p></li>
+</ul>
 </div>
 
 
@@ -165,7 +177,7 @@
         <a href="installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to XXX’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to metricspaces’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -174,7 +186,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, XXX
+        &copy; Copyright 2020, Donald R. Sheehy
 
     </p>
   </div>
