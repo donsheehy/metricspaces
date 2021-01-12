@@ -91,7 +91,7 @@ print(P.dist(a, b))
 You might be wondering how this got glued together.
 There was nothing in the instantiation of the `MetricSpace` object that indicated the type of the points.
 This is fine.
-In the absence of other info, the class defaults to look for a
+In the absence of other info, the class defaults to look for a `dist` method on the points.
 
 You could also have done the following, but there is not a good reason to do so.
 
@@ -108,7 +108,7 @@ print(P.dist(MyPoint(3), MyPoint(5))) # should be 2
 
 <!-- /code_chunk_output -->
 
-One case where you might want to pass a distance method explicitly if it has a name other than `dist`.
+One case where you might want to pass a distance method explicitly is if it has a name other than `dist`.
 This can be useful for wrangling your distance into a `MetricSpace` object.
 Here is an example.
 

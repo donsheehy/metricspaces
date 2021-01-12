@@ -1,4 +1,4 @@
-from metricspaces.np_point import NumpyPoint
+from metricspaces.numpypoint import NumpyPoint
 import unittest
 
 class TestNumpyPoint(unittest.TestCase):
@@ -10,6 +10,6 @@ class TestNumpyPoint(unittest.TestCase):
 
     def testpointsarehashable(self):
         hash(NumpyPoint([2,3,4]))
-        
+
 if __name__ == '__main__':
     unittest.main()
