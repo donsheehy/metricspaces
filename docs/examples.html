@@ -35,8 +35,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Command Line Interface" href="cli.html" />
-    <link rel="prev" title="Metric Spaces API" href="metricspace.html" /> 
+    <link rel="prev" title="Multi-Dimensional Scaling (MDS) Explained" href="mds_explained.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -85,13 +84,13 @@
 <li class="toctree-l1"><a class="reference internal" href="problem.html">The Problem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="metricspace.html">Metric Spaces API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mds_explained.html">Multi-Dimensional Scaling (MDS) Explained</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#a-distance-function">A Distance Function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#a-point-class">A Point Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#a-distance-matrix">A Distance Matrix</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="cli.html">Command Line Interface</a></li>
 </ul>
 
             
@@ -226,7 +225,7 @@ Here it is in action.</p>
 <p>You might be wondering how this got glued together.
 There was nothing in the instantiation of the <code class="docutils literal notranslate"><span class="pre">MetricSpace</span></code> object that indicated the type of the points.
 This is fine.
-In the absence of other info, the class defaults to look for a</p>
+In the absence of other info, the class defaults to look for a <code class="docutils literal notranslate"><span class="pre">dist</span></code> method on the points.</p>
 <p>You could also have done the following, but there is not a good reason to do so.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">metricspaces</span> <span class="kn">import</span> <span class="n">MetricSpace</span>
 
@@ -237,7 +236,7 @@ In the absence of other info, the class defaults to look for a</p>
 <!-- code_chunk_output --><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span>
 </pre></div>
 </div>
-<!-- /code_chunk_output --><p>One case where you might want to pass a distance method explicitly if it has a name other than <code class="docutils literal notranslate"><span class="pre">dist</span></code>.
+<!-- /code_chunk_output --><p>One case where you might want to pass a distance method explicitly is if it has a name other than <code class="docutils literal notranslate"><span class="pre">dist</span></code>.
 This can be useful for wrangling your distance into a <code class="docutils literal notranslate"><span class="pre">MetricSpace</span></code> object.
 Here is an example.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">metricspaces</span> <span class="kn">import</span> <span class="n">MetricSpace</span>
@@ -306,10 +305,8 @@ If you can load the distances directly into a dictionary with frozenset pairs of
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="cli.html" class="btn btn-neutral float-right" title="Command Line Interface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="metricspace.html" class="btn btn-neutral float-left" title="Metric Spaces API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="mds_explained.html" class="btn btn-neutral float-left" title="Multi-Dimensional Scaling (MDS) Explained" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
