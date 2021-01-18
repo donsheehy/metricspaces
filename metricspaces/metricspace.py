@@ -11,7 +11,7 @@ class MetricSpace:
         If `cache` is not provided, a new empty cache will be initialized.
         """
         self.cache = cache if cache is not None else {}
-        self.points = set(points)
+        self.points = list(points)
         self.distfn = dist if dist is not None else MetricSpace.pointdist
 
     def add(self, point):
