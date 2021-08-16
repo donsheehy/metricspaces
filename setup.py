@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="metricspaces",
-    version="0.1.0",
+    version="0.2.0",
     author="Donald R. Sheehy",
     author_email="don.r.sheehy@gmail.com",
     description="A package for computing wiht metric spaces",
@@ -18,12 +18,6 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.6',
-        install_requires =[
-        'Click',
-    ],
-    entry_points='''
-        [console_scripts]
-        metricspaces=metricspaces.cli:cli
-    '''
+    python_requires='>=3.8',
+    install_requires =[],
 )

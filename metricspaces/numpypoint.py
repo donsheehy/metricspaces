@@ -18,3 +18,9 @@ class NumpyPoint:
 
     def dist(self, other):
         return self.distsq(other) ** (0.5)
+
+    def __str__(self):
+        return str(self.point)
+
+    def __iter__(self):
+        return iter(self.point)

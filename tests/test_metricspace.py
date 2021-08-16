@@ -3,8 +3,8 @@ import unittest
 
 class TestMetricSpace(unittest.TestCase):
     def testinit_empty(self):
-        M = MetricSpace
-    
+        M = MetricSpace()
+
     def testinit(self):
         n = 15
         P = [R1(i) for i in range(n)]
@@ -53,6 +53,18 @@ class TestMetricSpace(unittest.TestCase):
         self.assertEqual(M.distsq(c,a), 100)
         self.assertEqual(M.distsq(a,b), 4) # still
         self.assertEqual(M.distsq(c, b), 64)
+
+    def testiter(self):
+        """
+        The iteration order should match the insertion order.
+        """
+        P = [R1(5), R1(2), R1(3)]
+        M = MetricSpace(P)
+        self.assertEqual(P, list(M))
+        newpoint = R1(4)
+        M.add(newpoint)
+        self.assertEqual(P + [R1(4)], list(M))
+
 
 
 if __name__ == '__main__':

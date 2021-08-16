@@ -10,10 +10,13 @@ D = [[0, 30, 40], [30, 0, 50], [40, 50, 0]]
 
 T = MetricSpace(dist = lambda x,y: D[x][y])
 print(T.dist(1,2))
+print(f"Cache size is {len(T.cache)}")
+
 ```
 <!-- code_chunk_output -->
 
 50
+Cache size is 1
 
 
 <!-- /code_chunk_output -->
@@ -30,11 +33,34 @@ my_cache = {frozenset((i,j)): D[i][j] for i in range(3) for j in range(i,3)}
 T = MetricSpace(cache = my_cache)
 print(T.dist(1, 2))
 print(T.dist(2, 1))
+print(f"Cache size is {len(T.cache)}")
 ```
 <!-- code_chunk_output -->
 
 50
 50
+Cache size is 6
+
+
+<!-- /code_chunk_output -->
+
+#### Alternatively, you can just turn off caching.
+
+```python {cmd modify_source}
+from metricspaces import MetricSpace
+
+D = [[0, 30, 40], [30, 0, 50], [40, 50, 0]]
+
+T = MetricSpace(dist = lambda x,y: D[x][y], turnoffcache = True)
+print(T.dist(1, 2))
+print(T.dist(2, 1))
+print(f"Cache size is {len(T.cache)}")
+```
+<!-- code_chunk_output -->
+
+50
+50
+Cache size is 0
 
 
 <!-- /code_chunk_output -->

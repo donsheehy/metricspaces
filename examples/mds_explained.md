@@ -38,7 +38,6 @@ Just as in Principle Component Analysis, the eigenvectors of the covariance matr
 We extract these using the singular value decomposition of `B` as follows.
 
 ```python {cmd continue}
-
 target_dimension = 2
 U, Sigma, VT = np.linalg.svd(B)
 Q = (U @ np.diag(Sigma ** (1/2)))[:,:target_dimension]

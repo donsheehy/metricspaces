@@ -1,5 +1,18 @@
 class MetricSpace:
-    def __init__(self, points = (), dist = None, cache = None):
+    """
+    A class to store a metric space.
+    The standard usage is to specify a collection of points and a distance
+    function.  Either the points or the distance function can be omitted.
+    If only the points are provided, the distance function will default to the
+    `dist` method on the point objects.
+    If only the distance function is provided, then it is not possible to
+    iterate over the points.  This would be the case for infinite metric spaces.
+    """
+
+    def __init__(self, points = (),
+                 dist = None,
+                 cache = None,
+                 turnoffcache=False):
         """
         Initialize a new `MetricSpace` object.
 
@@ -9,16 +22,23 @@ class MetricSpace:
 
         It is possible to seed the cache at the time of construction.
         If `cache` is not provided, a new empty cache will be initialized.
+
+        If `turnoffcache` is True, then distances will not be cached.
         """
+        self.turnoffcache = turnoffcache
         self.cache = cache if cache is not None else {}
-        self.points = list(points)
+        self.points = {}
+        for p in points:
+            self.add(p)
         self.distfn = dist if dist is not None else MetricSpace.pointdist
 
     def add(self, point):
         """
         Add `point` to the metric space.
         """
-        self.points.add(point)
+        # Note: we use a dictionary here to preserve insertion order for
+        # things like distance matrices and MDS.
+        self.points[point] = None
 
     def fromstrings(self, strings, parser):
         """
@@ -29,11 +49,13 @@ class MetricSpace:
         for s in strings:
             self.add(parser(s.split(';')[0]))
 
-
     def __iter__(self):
         """
         Return an iterator over the points that have been explicitly added to
         the metric space.
+
+        The iteration order is fixed to be the order of first insertion.
+        This is accomplished through Python's natural ordering for dict keys.
 
         It is possible to use a metric space object only as a cache-enabled
         wrapper around a metric function.  The iterator will not iterate over
@@ -64,10 +86,13 @@ class MetricSpace:
 
         The metric used will depend on the `distfn`.
         """
-        key = frozenset((a,b))
-        if key not in self.cache:
-            self.cache[key] = self.distfn(a,b)
-        return self.cache[key]
+        if self.turnoffcache:
+            return self.distfn(a,b)
+        else:
+            key = frozenset((a,b))
+            if key not in self.cache:
+                self.cache[key] = self.distfn(a,b)
+            return self.cache[key]
 
     def distsq(self, a, b):
         """
