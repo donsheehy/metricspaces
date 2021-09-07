@@ -27,7 +27,7 @@ class MetricSpace:
         """
         self.turnoffcache = turnoffcache
         self.cache = cache if cache is not None else {}
-        self.points = {}
+        self.points = []
         for p in points:
             self.add(p)
         self.distfn = dist if dist is not None else MetricSpace.pointdist
@@ -38,7 +38,9 @@ class MetricSpace:
         """
         # Note: we use a dictionary here to preserve insertion order for
         # things like distance matrices and MDS.
-        self.points[point] = None
+        # Sid: We changed the dict to a list to support changing the order
+        # of points to a random or greedy ordering
+        self.points.append(point)
 
     def fromstrings(self, strings, parser):
         """
@@ -72,6 +74,31 @@ class MetricSpace:
         `add` will be counted.
         """
         return len(self.points)
+
+    def __getitem__(self, index):
+        """
+        Return points of the metric space accessed by index.
+
+        If the index is a slice object then a subspace of the slcied points is
+        returned. Otherwise the single point is returned.
+        """
+        if isinstance(index, slice):
+            return self.subspace(self.points[index])
+        else:
+            return self.points[index]
+
+    def subspace(self, points):
+        """
+        Return a subspace of the metric space
+
+        It takes a subset of points of the metric space as input and returns
+        a new MetricSpace object created with those points and the superspace's
+        parameters
+        """
+        return MetricSpace(points,
+                            dist=self.distfn,
+                            cache=self.cache,
+                            turnoffcache=self.turnoffcache)
 
     def pointdist(a, b):
         """
