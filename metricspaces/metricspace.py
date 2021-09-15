@@ -127,14 +127,14 @@ class MetricSpace:
         """
         return self.dist(a, b) ** 2.
 
-    def comparedist(self, x, a, b, delta = 0):
+    def comparedist(self, x, a, b, delta = 0, alpha = 1):
         """
         Return True iff `x` is closer to `a` than to `b`.
 
-        Technically, it returns `d(x,a) < d(x,b) - delta`, where delta is
+        Technically, it returns `d(x,a) < alpha * d(x,b) - delta`, where delta is
         optional and defaults to zero.
         """
-        return self.dist(x,a) < self.dist(x,b) - delta
+        return self.dist(x,a) < alpha * self.dist(x,b) - delta
 
     def distlt(self, a, b, delta = 0):
         """
