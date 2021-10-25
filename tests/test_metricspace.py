@@ -54,6 +54,20 @@ class TestMetricSpace(unittest.TestCase):
         self.assertEqual(M.distsq(a,b), 4) # still
         self.assertEqual(M.distsq(c, b), 64)
 
+    def test_getitem_subspace(self):
+        def dist(x:float, y:float):
+            return abs(x-y)
+
+        a = 1
+        b = 5
+        c = 9
+        M = MetricSpace([a,b,c], dist)
+        self.assertEqual(M[0], 1)
+        M_1 = M[1:]
+        self.assertEqual(M_1.dist(M_1[0], M_1[1]), 4)
+
+        
+
     def testiter(self):
         """
         The iteration order should match the insertion order.

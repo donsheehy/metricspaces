@@ -27,7 +27,7 @@ class MetricSpace:
         """
         self.turnoffcache = turnoffcache
         self.cache = cache if cache is not None else {}
-        self.points = {}
+        self.points = []
         for p in points:
             self.add(p)
         self.distfn = dist if dist is not None else MetricSpace.pointdist
@@ -38,7 +38,9 @@ class MetricSpace:
         """
         # Note: we use a dictionary here to preserve insertion order for
         # things like distance matrices and MDS.
-        self.points[point] = None
+        # Sid: We changed the dict to a list to support changing the order
+        # of points to a random or greedy ordering
+        self.points.append(point)
 
     def fromstrings(self, strings, parser):
         """
@@ -73,6 +75,31 @@ class MetricSpace:
         """
         return len(self.points)
 
+    def __getitem__(self, index):
+        """
+        Return points of the metric space accessed by index.
+
+        If the index is a slice object then a subspace of the slcied points is
+        returned. Otherwise the single point is returned.
+        """
+        if isinstance(index, slice):
+            return self.subspace(self.points[index])
+        else:
+            return self.points[index]
+
+    def subspace(self, points):
+        """
+        Return a subspace of the metric space
+
+        It takes a subset of points of the metric space as input and returns
+        a new MetricSpace object created with those points and the superspace's
+        parameters
+        """
+        return MetricSpace(points,
+                            dist=self.distfn,
+                            cache=self.cache,
+                            turnoffcache=self.turnoffcache)
+
     def pointdist(a, b):
         """
         Return the distance from `a` to `b` as measured using the metric
@@ -100,14 +127,14 @@ class MetricSpace:
         """
         return self.dist(a, b) ** 2.
 
-    def comparedist(self, x, a, b, delta = 0):
+    def comparedist(self, x, a, b, delta = 0, alpha = 1):
         """
         Return True iff `x` is closer to `a` than to `b`.
 
-        Technically, it returns `d(x,a) < d(x,b) - delta`, where delta is
+        Technically, it returns `d(x,a) < alpha * d(x,b) - delta`, where delta is
         optional and defaults to zero.
         """
-        return self.dist(x,a) < self.dist(x,b) - delta
+        return self.dist(x,a) < alpha * self.dist(x,b) - delta
 
     def distlt(self, a, b, delta = 0):
         """
