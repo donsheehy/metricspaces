@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="metricspaces",
-    version="0.2.0",
+    version="0.3.0",
     author="Donald R. Sheehy",
     author_email="don.r.sheehy@gmail.com",
-    description="A package for computing wiht metric spaces",
+    description="A package for computing with metric spaces",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/donsheehy/metricspaces",

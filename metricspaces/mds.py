@@ -1,9 +1,16 @@
 import numpy as np
 from metricspaces import MetricSpace
 from metricspaces import NumpyPoint
+
+
 class MDS:
+    """
+    A class for structuring data associated with Multi-Dimensional Scaling.
+    """
+
     def __init__(self, M, target_dimension = None):
-        """Initialize an empty MDS object for a given metric space M.
+        """
+        Initialize an empty MDS object for a given metric space M.
         """
         self.M = M
         n = len(M)

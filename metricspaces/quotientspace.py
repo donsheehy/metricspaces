@@ -3,6 +3,9 @@ from metricspaces import MetricSpace
 class QuotientSpace(MetricSpace):
     """
     A class to store quotients of metric spaces with a single equivalence class.
+
+    WARNING: This is still work in progress.
+    Maybe, don't use it yet.
     """
 
     def __init__(self, X:MetricSpace, proj):
@@ -11,11 +14,7 @@ class QuotientSpace(MetricSpace):
         """
         super().__init__(points=X.points, dist=X.dist, cache=X.cache, turnoffcache=X.turnoffcache)
         self.projfn = proj
-    
-    # def __init__(self, X:MetricSpace, eq_class):
-    #     super().__init__(points=X.points, dist=X.dist, cache=X.cache, turnoffcache=X.turnoffcache)
-    #     self.Y = [p for p in X if eq_class(p)]
-    
+
     def proj(self, a):
         return self.projfn(a)
 

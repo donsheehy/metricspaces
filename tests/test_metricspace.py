@@ -66,7 +66,6 @@ class TestMetricSpace(unittest.TestCase):
         M_1 = M[1:]
         self.assertEqual(M_1.dist(M_1[0], M_1[1]), 4)
 
-        
 
     def testiter(self):
         """
@@ -79,6 +78,12 @@ class TestMetricSpace(unittest.TestCase):
         M.add(newpoint)
         self.assertEqual(P + [R1(4)], list(M))
 
+    def testsetpointclass(self):
+        M = MetricSpace([2,3,4,5], pointclass=R1)
+        self.assertEqual(M[0], 2)
+        self.assertEqual(M[2], 4)
+        self.assertEqual(M[0].dist(M[3]), 3)
+        self.assertEqual(M[1].dist(M[2]), 1)
 
 
 if __name__ == '__main__':

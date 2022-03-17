@@ -12,7 +12,8 @@ class MetricSpace:
     def __init__(self, points = (),
                  dist = None,
                  cache = None,
-                 turnoffcache=False):
+                 turnoffcache=False,
+                 pointclass = lambda x:x):
         """
         Initialize a new `MetricSpace` object.
 
@@ -29,7 +30,7 @@ class MetricSpace:
         self.cache = cache if cache is not None else {}
         self.points = []
         for p in points:
-            self.add(p)
+            self.add(pointclass(p))
         self.distfn = dist if dist is not None else MetricSpace.pointdist
 
     def add(self, point):
