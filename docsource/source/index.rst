@@ -8,8 +8,9 @@ Welcome to metricspaces's documentation!
    problem
    installation
    metricspace
-   mds_explained
+   metricclass
    examples
+   mds_explained
 
 
 

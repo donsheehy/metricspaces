@@ -29,8 +29,9 @@ class MetricSpace:
         self.turnoffcache = turnoffcache
         self.cache = cache if cache is not None else {}
         self.points = []
+        self.pointclass = pointclass
         for p in points:
-            self.add(pointclass(p))
+            self.add(self.pointclass(p))
         self.distfn = dist if dist is not None else MetricSpace.pointdist
 
     def add(self, point):
@@ -80,7 +81,7 @@ class MetricSpace:
         """
         Return points of the metric space accessed by index.
 
-        If the index is a slice object then a subspace of the slcied points is
+        If the index is a slice object then a subspace of the sliced points is
         returned. Otherwise the single point is returned.
         """
         if isinstance(index, slice):
@@ -88,23 +89,26 @@ class MetricSpace:
         else:
             return self.points[index]
 
-    def subspace(self, points):
+    def subspace(self, points = ()):
         """
         Return a subspace of the metric space
 
         It takes a subset of points of the metric space as input and returns
         a new MetricSpace object created with those points and the superspace's
-        parameters
+        parameters.
         """
         return MetricSpace(points,
                             dist=self.distfn,
                             cache=self.cache,
-                            turnoffcache=self.turnoffcache)
+                            turnoffcache=self.turnoffcache,
+                            pointclass = self.pointclass)
 
     def pointdist(a, b):
         """
         Return the distance from `a` to `b` as measured using the metric
         supplied by the input points.
+
+        This will be set as the default distance if no other distance function is provided.
         """
         return a.dist(b)
 
