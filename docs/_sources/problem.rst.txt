@@ -23,3 +23,5 @@ The primary design goals are:
 - It should support alternative distance comparison methods.
 
 - It should cache upper and lower bounds on distances in settings where distance comparison suffices.
+
+Not all of these features are currently implemented.

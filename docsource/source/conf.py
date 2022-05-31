@@ -33,8 +33,13 @@ release = '0.2.1'
 extensions = [
 'sphinx.ext.autodoc',
 'sphinx.ext.napoleon',
-'recommonmark'
+'myst_parser',
 ]
+
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.md': 'markdown',
+}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

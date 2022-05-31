@@ -1,66 +1,34 @@
-
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Examples &mdash; metricspaces 0.0.1 documentation</title>
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Examples &mdash; metricspaces 0.2.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
-  
-  
-  
-
-  
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Multi-Dimensional Scaling (MDS) Explained" href="mds_explained.html" /> 
+    <link rel="next" title="Multi-Dimensional Scaling (MDS) Explained" href="mds_explained.html" />
+    <link rel="prev" title="The Metric Class Decorator" href="metricclass.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="index.html" class="icon icon-home"> metricspaces
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -68,97 +36,50 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="problem.html">The Problem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="metricspace.html">Metric Spaces API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mds_explained.html">Multi-Dimensional Scaling (MDS) Explained</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metricclass.html">The Metric Class Decorator</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#a-distance-function">A Distance Function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#a-point-class">A Point Class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#a-distance-matrix">A Distance Matrix</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="mds_explained.html">Multi-Dimensional Scaling (MDS) Explained</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">metricspaces</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html">Docs</a> &raquo;</li>
-        
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
       <li>Examples</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="_sources/examples.md.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="examples">
-<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="a-distance-function">
-<h2>A Distance Function<a class="headerlink" href="#a-distance-function" title="Permalink to this headline">¶</a></h2>
+             
+  <section id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"></a></h1>
+<section id="a-distance-function">
+<h2>A Distance Function<a class="headerlink" href="#a-distance-function" title="Permalink to this headline"></a></h2>
 <p>One of the simplest way to express a metric is to define the distance directly as a function.</p>
 <p>Let’s write a function that computes the hamming distance between strings.
 The distance between strings of the same length is the number of indices at which the strings differ.
@@ -174,12 +95,14 @@ If the lengths differ, the distance is increased by the difference of the length
 <span class="nb">print</span><span class="p">(</span><span class="n">hamming_distance</span><span class="p">(</span><span class="s2">&quot;aaa&quot;</span><span class="p">,</span> <span class="s2">&quot;abbxxx&quot;</span><span class="p">))</span> <span class="c1"># should be 5</span>
 </pre></div>
 </div>
-<!-- code_chunk_output --><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>
+<!-- code_chunk_output -->
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>
 <span class="mi">2</span>
 <span class="mi">5</span>
 </pre></div>
 </div>
-<!-- /code_chunk_output --><p>Here is how you would construct a metric space that uses this function to compute distances.</p>
+<!-- /code_chunk_output -->
+<p>Here is how you would construct a metric space that uses this function to compute distances.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">metricspaces</span> <span class="kn">import</span> <span class="n">MetricSpace</span>
 
 <span class="n">S</span> <span class="o">=</span> <span class="n">MetricSpace</span><span class="p">(</span><span class="n">dist</span> <span class="o">=</span> <span class="n">hamming_distance</span><span class="p">)</span>
@@ -192,13 +115,15 @@ Here it is in action.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">S</span><span class="o">.</span><span class="n">dist</span><span class="p">(</span><span class="s2">&quot;aaa&quot;</span><span class="p">,</span> <span class="s2">&quot;bac&quot;</span><span class="p">))</span> <span class="c1"># should be 2</span>
 </pre></div>
 </div>
-<!-- code_chunk_output --><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>
+<!-- code_chunk_output -->
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>
 <span class="mi">2</span>
 </pre></div>
 </div>
-<!-- /code_chunk_output --></div>
-<div class="section" id="a-point-class">
-<h2>A Point Class<a class="headerlink" href="#a-point-class" title="Permalink to this headline">¶</a></h2>
+<!-- /code_chunk_output -->
+</section>
+<section id="a-point-class">
+<h2>A Point Class<a class="headerlink" href="#a-point-class" title="Permalink to this headline"></a></h2>
 <p>Another common way to define a metric would be to define a metric as a method on an object.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyPoint</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
@@ -218,10 +143,12 @@ Here it is in action.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">P</span><span class="o">.</span><span class="n">dist</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
 </pre></div>
 </div>
-<!-- code_chunk_output --><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span>
+<!-- code_chunk_output -->
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span>
 </pre></div>
 </div>
-<!-- /code_chunk_output --><p><strong>Wait!  WAT?</strong></p>
+<!-- /code_chunk_output -->
+<p><strong>Wait!  WAT?</strong></p>
 <p>You might be wondering how this got glued together.
 There was nothing in the instantiation of the <code class="docutils literal notranslate"><span class="pre">MetricSpace</span></code> object that indicated the type of the points.
 This is fine.
@@ -233,10 +160,12 @@ In the absence of other info, the class defaults to look for a <code class="docu
 <span class="nb">print</span><span class="p">(</span><span class="n">P</span><span class="o">.</span><span class="n">dist</span><span class="p">(</span><span class="n">MyPoint</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">MyPoint</span><span class="p">(</span><span class="mi">5</span><span class="p">)))</span> <span class="c1"># should be 2</span>
 </pre></div>
 </div>
-<!-- code_chunk_output --><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span>
+<!-- code_chunk_output -->
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span>
 </pre></div>
 </div>
-<!-- /code_chunk_output --><p>One case where you might want to pass a distance method explicitly is if it has a name other than <code class="docutils literal notranslate"><span class="pre">dist</span></code>.
+<!-- /code_chunk_output -->
+<p>One case where you might want to pass a distance method explicitly is if it has a name other than <code class="docutils literal notranslate"><span class="pre">dist</span></code>.
 This can be useful for wrangling your distance into a <code class="docutils literal notranslate"><span class="pre">MetricSpace</span></code> object.
 Here is an example.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">metricspaces</span> <span class="kn">import</span> <span class="n">MetricSpace</span>
@@ -256,15 +185,17 @@ Here is an example.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">L_inf</span><span class="o">.</span><span class="n">dist</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">))</span> <span class="c1"># should be 2</span>
 </pre></div>
 </div>
-<!-- code_chunk_output --><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span>
+<!-- code_chunk_output -->
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span>
 </pre></div>
 </div>
-<!-- /code_chunk_output --><p>If you are uncomfortable passing a method name to a function, then I would encourage you to seize this moment to really embrace that it’s just a function.
+<!-- /code_chunk_output -->
+<p>If you are uncomfortable passing a method name to a function, then I would encourage you to seize this moment to really embrace that it’s just a function.
 It only becomes a method when called on an object.
 This is yet another reason why including <code class="docutils literal notranslate"><span class="pre">self</span></code> explicitly as a parameter is a brilliant design decision… but I digress.</p>
-</div>
-<div class="section" id="a-distance-matrix">
-<h2>A Distance Matrix<a class="headerlink" href="#a-distance-matrix" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="a-distance-matrix">
+<h2>A Distance Matrix<a class="headerlink" href="#a-distance-matrix" title="Permalink to this headline"></a></h2>
 <p>Sometimes, especially in cases where distances have been precomputed offline, we might have the distances provided as matrix.
 This is a sufficiently common situation that it might be better to provide some special mechanism for it.  For now, maybe try the following.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">metricspaces</span> <span class="kn">import</span> <span class="n">MetricSpace</span>
@@ -275,10 +206,12 @@ This is a sufficiently common situation that it might be better to provide some 
 <span class="nb">print</span><span class="p">(</span><span class="n">T</span><span class="o">.</span><span class="n">dist</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
 </pre></div>
 </div>
-<!-- code_chunk_output --><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">50</span>
+<!-- code_chunk_output -->
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">50</span>
 </pre></div>
 </div>
-<!-- /code_chunk_output --><p>One downside of this approach is that the cache will then duplicate all these distances.
+<!-- /code_chunk_output -->
+<p>One downside of this approach is that the cache will then duplicate all these distances.
 If you can load the distances directly into a dictionary with frozenset pairs of points as keys, you can pass this directly to <code class="docutils literal notranslate"><span class="pre">__init__</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">metricspaces</span> <span class="kn">import</span> <span class="n">MetricSpace</span>
 
@@ -290,58 +223,44 @@ If you can load the distances directly into a dictionary with frozenset pairs of
 <span class="nb">print</span><span class="p">(</span><span class="n">T</span><span class="o">.</span><span class="n">dist</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
-<!-- code_chunk_output --><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">50</span>
+<!-- code_chunk_output -->
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">50</span>
 <span class="mi">50</span>
 </pre></div>
 </div>
-<!-- /code_chunk_output --></div>
-</div>
+<!-- /code_chunk_output -->
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-      
-        <a href="mds_explained.html" class="btn btn-neutral float-left" title="Multi-Dimensional Scaling (MDS) Explained" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="metricclass.html" class="btn btn-neutral float-left" title="The Metric Class Decorator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mds_explained.html" class="btn btn-neutral float-right" title="Multi-Dimensional Scaling (MDS) Explained" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2020, Donald R. Sheehy
-
-    </p>
+    <p>&#169; Copyright 2020, Donald R. Sheehy.</p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

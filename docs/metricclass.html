@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Metric Class Decorator &mdash; metricspaces 0.2.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="prev" title="Metric Spaces API" href="metricspace.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> metricspaces
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="problem.html">The Problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metricspace.html">Metric Spaces API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The Metric Class Decorator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mds_explained.html">Multi-Dimensional Scaling (MDS) Explained</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">metricspaces</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>The Metric Class Decorator</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/metricclass.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="the-metric-class-decorator">
+<h1>The Metric Class Decorator<a class="headerlink" href="#the-metric-class-decorator" title="Permalink to this headline"></a></h1>
+<p>Sometimes, you will write a class that needs to compute distances.
+This means that it ought to have access to the metric space object and not just the points.
+A simple example would be a class for a metric ball like the following.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MetricBall</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="n">center</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span>
+
+    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">center</span><span class="o">.</span><span class="n">dist</span><span class="p">(</span><span class="n">point</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span>
+</pre></div>
+</div>
+<p>This code will work just fine in many cases, but it will fail if the metric has been specified by a distance function that is not a method on the points.
+It will also bypass the cache.</p>
+<p>One cumbersome solution would be to store the metric space in the ball object.
+This is highly redundant if there are many balls.
+A second solution would be to store the metric space as an attribute of the class.
+The problem with this solution is that it would only permit one kind of metric ball to exist at a time.
+A third solution would be to subclass <code class="docutils literal notranslate"><span class="pre">MetricBall</span></code> and then assign the metric as an attribute of the subclass.
+At first, this seems the most cumbersome to write, even if it resolves the main issues and corresponds precisely to what we want the class to mean, i.e., it is a metric ball in a particular metric.
+As this pattern is relatively standard, we provide a decorator that makes it trivial to produce subclasses this way.
+This is how you would write the same <code class="docutils literal notranslate"><span class="pre">MetricBall</span></code> class with the decorator.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@metric_class</span>
+<span class="k">class</span> <span class="nc">MetricBall</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="n">center</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span>
+
+    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">):</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="n">MetricBall</span><span class="o">.</span><span class="n">metric</span><span class="o">.</span><span class="n">dist</span>
+        <span class="k">return</span> <span class="n">dist</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">center</span><span class="p">,</span> <span class="n">point</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span>
+</pre></div>
+</div>
+<p>The only line of code that is different is that we are now accessing the metric via an attribute called <code class="docutils literal notranslate"><span class="pre">metric</span></code> that is defined on the class.
+To use this class, we would first define the type by combining a metric space and a metric ball as follows.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="n">MetricSpace</span><span class="p">()</span>
+<span class="n">Ball</span> <span class="o">=</span> <span class="n">MetricBall</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<span class="n">ball</span> <span class="o">=</span> <span class="n">Ball</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The point here is the decorator turns the <code class="docutils literal notranslate"><span class="pre">MetricBall</span></code> class into a function that returns a class.
+The <code class="docutils literal notranslate"><span class="pre">MetricSpace</span></code> is a parameter to this function.</p>
+<p>If you define a new class this way, you may wish to assign the name of the class manually.
+Looking at the type of <code class="docutils literal notranslate"><span class="pre">ball</span></code> above, we would not see <code class="docutils literal notranslate"><span class="pre">Ball</span></code>, but instead <code class="docutils literal notranslate"><span class="pre">MetricBall_M</span></code>.
+If you want to also change the name, you can give a second parameter with the name when defining the <code class="docutils literal notranslate"><span class="pre">Ball</span></code> class as follows.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Ball</span> <span class="o">=</span> <span class="n">MetricBall</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="s2">&quot;Ball&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="metricspace.html" class="btn btn-neutral float-left" title="Metric Spaces API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Donald R. Sheehy.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
