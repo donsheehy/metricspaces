@@ -1,6 +1,6 @@
 import numpy as np
 from metricspaces import MetricSpace
-from metricspaces import NumpyPoint
+from metricspaces.numpypoint import NumpyPoint
 
 
 class MDS:

@@ -1,3 +1,5 @@
+from metricspaces import MetricSpace
+
 class R1(float):
     """
     The simplest example of a nontrivial metric space.
